@@ -1,13 +1,21 @@
 import re
 
-# NOTE: There are only a few tests included, so multiple solutions will work.
-# Feel free to encourage students to find oversights and add tests to this lab!
+# Match a full name like "John Cena"
+name_regex = re.compile(r"^[A-Z][a-z]+ [A-Z][a-z]+$")
 
-name = r""
-name_regex = re.compile(name)
+# Name: allows hyphenated last names like "Taylor-Joy"
+name_regex = re.compile(r"^[A-Z][a-z]+ [A-Z][a-z]+(-[A-Z][a-z]+)?$")
 
-phone_number = r""
-phone_regex = re.compile(phone_number)
+# Name: allows hyphens, apostrophes, single/multiple name parts
+name_regex = re.compile(
+    r"^[A-Z][a-z]*(?:[-'][A-Z][a-z]*)*(?: [A-Z][a-z]*(?:[-'][A-Z][a-z]*)*)?$"
+)
 
-email_address = r""
-email_regex = re.compile(email_address)
+phone_regex = re.compile(
+    r"^(?:\(\d{3}\)\s?\d{3}-\d{4}|\d{3}-\d{3}-\d{4}|\d{10})$"
+)
+
+# Email: must start with a letter, allows dots and hyphens, simple domain rules
+email_regex = re.compile(
+    r"^[A-Za-z][\w\.-]*@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+)
